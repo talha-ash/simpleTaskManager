@@ -24,7 +24,7 @@ const Login = () => {
         user: {
           name: userInfo.name,
           token: userInfo.token,
-          imageUrl: data.imageUrl
+          imageUrl: data.image
         }
       });
       dispatch({ type: "isLoading" });

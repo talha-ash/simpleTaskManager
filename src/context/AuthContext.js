@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useCallback } from "react";
 
 const AuthContext = createContext();
 const initialState = {
@@ -32,9 +32,14 @@ const AuthReducer = (state, action) => {
 };
 
 const isLoggedIn = () => {
-  const user = JSON.parse(localStorage.getItem("user") || "[]");
-  if (user?.token) {
-    return user;
+  try {
+    const user = JSON.parse(localStorage.getItem("user") || "[]");
+    if (user?.token) {
+      return user;
+    }
+  } catch (error) {
+    console.log(error);
+    return;
   }
 };
 
@@ -42,8 +47,10 @@ const AuthProvider = props => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const user = isLoggedIn();
   if (user && !state.user) {
-    dispatch({ type: "login", payload: { user } });
+    dispatch({ type: "login", user });
   }
+
+  const logout = useCallback(() => dispatch({ type: "logout" }), []);
 
   return (
     <AuthContext.Provider
@@ -51,6 +58,7 @@ const AuthProvider = props => {
         user: state.user,
         state,
         dispatch,
+        logout,
         isLoginError: state.isLoginError
       }}
       {...props}
