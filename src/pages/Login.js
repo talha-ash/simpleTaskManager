@@ -2,7 +2,7 @@ import React, { useContext, useState, useCallback } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context";
-
+import { Card, InputField, Button } from "../components";
 const Login = () => {
   const { user, isLoginError, dispatch } = useContext(AuthContext);
   const [name, setName] = useState("");
@@ -42,26 +42,30 @@ const Login = () => {
       }}
     />
   ) : (
-    <div>
-      <h1>Login</h1>
-      {isLoginError ? "id or name is incorrect" : ""}
-      <form>
-        <label>Id</label>
-        <input
-          name="id"
-          value={apiKey}
-          onChange={({ target }) => setApiKey(target.value)}
-        />
-        <label>name</label>
-        <input
-          name="name"
-          value={name}
-          onChange={({ target }) => setName(target.value)}
-        />
-        <button type="button" onClick={() => login({ apiKey, name })}>
-          Login
-        </button>
-      </form>
+    <div className="container h-100vh d-flex justify-content-center align-items-center">
+      <Card>
+        <h3 class="bold">Login</h3>
+        {isLoginError ? <h5>id or name is incorrect</h5> : null}
+        <form>
+          <InputField
+            name="id"
+            placeholder="Id"
+            value={apiKey}
+            onChange={({ target }) => setApiKey(target.value)}
+          />
+          <InputField
+            name="name"
+            value={name}
+            placeholder="Name"
+            onChange={({ target }) => setName(target.value)}
+          />
+          <Button
+            type="button"
+            title="Login"
+            onClick={() => login({ apiKey, name })}
+          />
+        </form>
+      </Card>
     </div>
   );
 };
