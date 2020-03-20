@@ -44,7 +44,7 @@ const TaskModal = ({ isOpen, closeModal, onSubmit, title }) => {
           />
           <Button
             type="button"
-            margin={"0rem"}
+            margin={"1rem 0rem"}
             title={title}
             onClick={handleSubmit}
           />

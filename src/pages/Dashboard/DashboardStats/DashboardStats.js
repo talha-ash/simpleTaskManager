@@ -39,8 +39,7 @@ const DashboardStats = ({ dashboardData, user, dispatch, tasks, hasTasks }) => {
     </DashboardStatsContainer>
   ) : null;
 };
-
-export default DashboardStats;
+export default React.memo(DashboardStats);
 
 const DashboardStatsContainer = styled.section`
   display: flex;

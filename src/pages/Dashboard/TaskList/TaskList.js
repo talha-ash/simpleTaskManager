@@ -47,7 +47,7 @@ const TaskList = ({ tasks, user, dispatch, openAddTaskModal, hasTasks }) => {
   ) : null;
 };
 
-export default TaskList;
+export default React.memo(TaskList);
 
 const TaskListContainer = styled.section`
   width: 100%;
