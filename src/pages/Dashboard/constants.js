@@ -1,0 +1,8 @@
+export const DASHBOARDSTATS = "DASHBOARDSTATS";
+export const ADDTASKS = "ADDTASKS";
+export const ADDTASK = "ADDTASK";
+export const EDITTASK = "EDITTASK";
+export const DELETETASK = "DELETETASK";
+export const SEARCHTASKS = "SEARCHTASKS";
+export const ADDTASKERROR = "ADDTASKERROR";
+export const INITIALLOAD = "INITIALLOAD";

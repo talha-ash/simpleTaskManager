@@ -1,0 +1,31 @@
+.modal {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: none;
+  width: auto;
+  outline: none;
+  height: auto;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: none;
+  outline: none;
+  background-color: #d8d8d87e;
+}
+
+@media (min-width: 786px) {
+  .modal {
+    top: 50%;
+  }
+}
